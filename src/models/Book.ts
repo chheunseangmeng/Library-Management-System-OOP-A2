@@ -1,4 +1,4 @@
-import { BookFormat } from "./BookFormat";
+import { BookFormat } from "./enum/BookFormat";
 import { Review } from "./Review";
 
 export abstract class Book {
