@@ -1,14 +1,14 @@
 export class Review{
-    public reviewid:string
-    public memberid:string
-    public bookid :string
+    public reviewId:string
+    public memberId:string
+    public bookId :string
     public rating:number
     public comment:string
 
-    constructor(reviewid:string,memberid:string, bookid:string, rating:number,comment:string ) {
-        this.reviewid = reviewid;
-        this.memberid = memberid;
-        this.bookid = bookid;
+    constructor(reviewId:string,memberId:string, bookId:string, rating:number,comment:string ) {
+        this.reviewId = reviewId;
+        this.memberId = memberId;
+        this.bookId = bookId;
         this.rating = rating;
         this.comment = comment;
     }
