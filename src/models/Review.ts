@@ -1,18 +1,15 @@
-
 export class Review{
-    reviewId: string;
-    memberId : string;
-    bookId: string;
-    rating: number;
-    comment: string;
+    public reviewid:string
+    public memberid:string
+    public bookid :string
+    public rating:number
+    public comment:string
 
-    constructor(reviewId: string,memberId: string, bookId: string, rating:number, comment: string){
-        this.reviewId = reviewId;
-        this.memberId = memberId;
-        this.bookId = bookId;
+    constructor(reviewid:string,memberid:string, bookid:string, rating:number,comment:string ) {
+        this.reviewid = reviewid;
+        this.memberid = memberid;
+        this.bookid = bookid;
         this.rating = rating;
-        this.comment = comment
-
+        this.comment = comment;
     }
-
 }
