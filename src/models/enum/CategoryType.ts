@@ -1,0 +1,10 @@
+enum CategoryType {
+  FICTION,
+  NONFICTION,
+  SCIENCE,
+  HISTORY,
+  BIOGRAPHY,
+  TECHNOLOGY,
+  ART,
+  NOVEL
+}
