@@ -8,6 +8,7 @@ export class Member {
   address: string;
   memberType: MemberType;
 
+
   constructor(
     memberId: string,
     fullName: string,

@@ -6,7 +6,10 @@ export class BorrowedBook {
   dueDate: Date;
   returnDate: Date;
   fine: number;
-
+  books: any;
+  isReturned: any;
+   
+    
   constructor(
     borrowId: string,
     memberId: string,
