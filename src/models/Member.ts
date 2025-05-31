@@ -48,7 +48,7 @@ export class Member {
   }
 }
 
-interface MemberType {
+export interface MemberType {
   typeId: string;
   typeName: string;
   maxReservations: number;
