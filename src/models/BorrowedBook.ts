@@ -27,6 +27,7 @@ export class BorrowedBook {
     this.returnDate = returnDate;
     this.fine = fine;
   }
+  
 }
 
   
