@@ -5,6 +5,9 @@ import { Reservation } from "./Reservation";
 import { Review } from "./Review";
 import { Librarian } from "./Librarian";
 
+/**
+ * Manages the library's collection of books, members, borrowed books, reservations, reviews, and librarians
+ */
 export class Library {
   private books: Book[];
   private members: Member[];
@@ -13,6 +16,9 @@ export class Library {
   private reviews: Review[];
   private librarians: Librarian[];
 
+  /**
+   * Creates a new Library instance
+   */
   constructor() {
     this.books = [];
     this.members = [];
@@ -22,26 +28,42 @@ export class Library {
     this.librarians = [];
   }
 
-  // Add a new member to the library
+  /**
+   * Adds a new member to the library
+   * @param member the member object to add
+   * @returns the added member
+   */
   addMember(member: Member): Member {
     this.members.push(member);
     return member;
   }
 
-  // Add a new book to the library
+  /**
+   * Adds a new book to the library
+   * @param book the book object to add
+   * @returns the added book
+   */
   addBook(book: Book): Book {
     this.books.push(book);
     return book;
   }
 
-  // Remove a book from the library by bookId
+  /**
+   * Removes a book from the library by bookId
+   * @param bookId the unique identifier of the book to remove
+   * @returns the number of books removed
+   */
   removeBook(bookId: string): number {
     const initialLength = this.books.length;
     this.books = this.books.filter(book => book.bookId !== bookId);
     return initialLength - this.books.length; // Returns number of books removed
   }
 
-  // Allow a member to reserve a book
+  /**
+   * Allows a member to reserve a book
+   * @param reservation the reservation object to add
+   * @throws {Error} if the reservation is invalid
+   */
   reserveBook(reservation: Reservation): void {
     if (!reservation) {
       throw new Error("Invalid reservation");
@@ -49,7 +71,11 @@ export class Library {
     this.reservations.push(reservation);
   }
 
-  // Add a review for a book
+  /**
+   * Adds a review for a book
+   * @param review the review object to add
+   * @throws {Error} if the review is invalid
+   */
   addReview(review: Review): void {
     if (!review) {
       throw new Error("Invalid review");
@@ -61,17 +87,28 @@ export class Library {
     }
   }
 
-  // Get all books borrowed by a specific member
+  /**
+   * Gets all books borrowed by a specific member
+   * @param memberId the unique identifier of the member
+   * @returns an array of borrowed books
+   */
   getBooksByMember(memberId: string): BorrowedBook[] {
     return this.borrowedBooks.filter(borrow => borrow.memberId === memberId && !borrow.isReturned);
   }
 
-  // Get all borrowed books that are not yet returned
+  /**
+   * Gets all borrowed books that are not yet returned
+   * @returns an array of borrowed books not yet returned
+   */
   notYetBorrowedBook(): BorrowedBook[] {
     return this.borrowedBooks.filter(borrow => !borrow.isReturned);
   }
 
-  // Get the number of available copies of a book
+  /**
+   * Gets the number of available copies of a book
+   * @param bookId the unique identifier of the book
+   * @returns the number of available copies
+   */
   getAvailableCopies(bookId: string): number {
     const book = this.books.find(b => b.bookId === bookId);
     return book ? book.getAvailableCopies() : 0;
