@@ -2,12 +2,6 @@ import { BookFormat } from "./enum/BookFormat";
 import { Review } from "./Review";
 
 export abstract class Book {
-  borrowCopy() {
-    throw new Error('Method not implemented.');
-  }
-  isAvailable(): unknown {
-    throw new Error('Method not implemented.');
-  }
     bookId: string;
     title: string;
     author: string;
@@ -18,7 +12,6 @@ export abstract class Book {
     availableCopies: number;
     location: string;
     reviews: Review[];
-  id: any;
 
     constructor(title: string, author: string, bookId: string, category: string, publicationYear: number, isbn: string, 
                 format: BookFormat[] = [], availableCopies: number, location: string, reviews: Review[] = []) {
