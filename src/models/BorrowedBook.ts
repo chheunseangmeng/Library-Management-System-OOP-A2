@@ -27,6 +27,13 @@ export class BorrowedBook {
     this.returnDate = returnDate;
     this.fine = fine;
   }
+
+   calculateFine(): void {
+    const msPerDay = 1000 * 60 * 60 * 24;
+    const overdueMs = this.returnDate.getTime() - this.dueDate.getTime();
+    const overdueDays = Math.ceil(overdueMs / msPerDay);
+    this.fine = overdueDays > 0 ? overdueDays * 1 : 0;
+  }
   
 }
 
