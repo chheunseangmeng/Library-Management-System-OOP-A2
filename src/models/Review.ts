@@ -13,4 +13,22 @@ export class Review{
         this.comment = comment;
     }
     
+
+     // Get a summary of the review
+    getSummary(): string {
+        return `Rating: ${this.rating}/5 - "${this.comment}" by Member ${this.memberId}`;
+    }
+
+    // Check if the review is valid
+    isValid(): boolean {
+        return (
+            this.reviewId !== '' &&
+            this.memberId !== '' &&
+            this.bookId !== '' &&
+            this.rating >= 1 &&
+            this.rating <= 5 &&
+            this.comment.trim().length > 0
+        );
+    }
+
 }
