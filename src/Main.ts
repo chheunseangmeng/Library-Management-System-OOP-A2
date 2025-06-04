@@ -7,24 +7,7 @@ import { Book } from "./models/Book";
 import { Review } from "./models/Review";
 import { Reservation } from "./models/Reservation";
 import { Library } from "./models/Library";
-
-// Define a concrete subclass for Book
-class FictionBook extends Book {
-  constructor(
-    title: string,
-    author: string,
-    bookId: string,
-    category: string,
-    publicationYear: number,
-    isbn: string,
-    format: BookFormat[],
-    availableCopies: number,
-    location: string,
-    reviews: Review[] = []
-  ) {
-    super(title, author, bookId, category, publicationYear, isbn, format, availableCopies, location, reviews);
-  }
-}
+import { FictionBook } from "./models/FictionBook";
 
 // Create member
 const member = new Member(
