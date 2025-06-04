@@ -40,8 +40,3 @@ export class Payment {
   }
 }
 
-// // Example usage:
-// const payment = new Payment("PMT001", "MBR123", 150.0, new Date(), "");
-// const success = payment.processPayment("credit");
-
-// console.log("Payment processed successfully?", success);

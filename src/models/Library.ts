@@ -9,12 +9,14 @@ import { Librarian } from "./Librarian";
  * Manages the library's collection of books, members, borrowed books, reservations, reviews, and librarians
  */
 export class Library {
+   
   private books: Book[];
   private members: Member[];
   private borrowedBooks: BorrowedBook[];
   private reservations: Reservation[];
   private reviews: Review[];
   private librarians: Librarian[];
+    memberId: any;
 
   /**
    * Creates a new Library instance
@@ -37,6 +39,11 @@ export class Library {
     this.members.push(member);
     return member;
   }
+
+  addBorrowedBook(borrowed: BorrowedBook): void {
+  this.borrowedBooks.push(borrowed);
+}
+
 
   /**
    * Adds a new book to the library
@@ -64,7 +71,7 @@ export class Library {
    * @param reservation the reservation object to add
    * @throws {Error} if the reservation is invalid
    */
-  reserveBook(reservation: Reservation): void {
+  reserveBook(memberId: string, bookId: string, reservation: Reservation): void {
     if (!reservation) {
       throw new Error("Invalid reservation");
     }
@@ -92,9 +99,13 @@ export class Library {
    * @param memberId the unique identifier of the member
    * @returns an array of borrowed books
    */
-  getBooksByMember(memberId: string): BorrowedBook[] {
-    return this.borrowedBooks.filter(borrow => borrow.memberId === memberId && !borrow.isReturned);
-  }
+  getBorrowedBooksByMember(memberId: string): BorrowedBook[] {
+  return this.borrowedBooks.filter(book => book.memberId === memberId);
+}
+
+  
+
+  
 
   /**
    * Gets all borrowed books that are not yet returned
