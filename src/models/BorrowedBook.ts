@@ -1,4 +1,7 @@
+import { Member } from "./Member";
+
 export class BorrowedBook {
+  
   // Unique identifier for the borrow transaction
   borrowId: string;
   // Identifier for the member who borrowed the book
@@ -42,4 +45,23 @@ export class BorrowedBook {
     // Set fine to $1 per overdue day, or 0 if not overdue
     this.fine = overdueDays > 0 ? overdueDays * 1 : 0;
   }
+
+  
+  getMemberName(): string {
+    return this.memberId;
+  }
+
+  returnBook(dateReturned: Date): void {
+    this.returnDate = dateReturned;
+    this.isReturned = true;
+    const msPerDay = 1000 * 60 * 60 * 24;
+    const daysLate = Math.floor(
+      (dateReturned.getTime() - this.dueDate.getTime()) / msPerDay
+    );
+    if (daysLate > 0) {
+      this.fine = daysLate * 1; // Example: $1 per day late
+    }
+  }
+
+
 }
