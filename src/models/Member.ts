@@ -1,24 +1,43 @@
-import { Reservation } from "./Reservation";
+/**
+ * Interface representing the type of membership,
+ * including limits on reservations and loan period.
+ */
+export interface MemberType {
+  /** Unique identifier for the membership type */
+  typeId: string;
+  /** Name of the membership type (e.g., Regular, Premium) */
+  typeName: string;
+  /** Maximum number of books the member can reserve */
+  maxReservations: number;
+  /** Number of days allowed for loan */
+  loanPeriodDays: number;
+}
 
 /**
- * Represents a library member with personal details and reservation capabilities
+ * Class representing a library member with personal details and membership info.
  */
 export class Member {
+  /** Unique identifier for the member */
   memberId: string;
+  /** Full name of the member */
   fullName: string;
+  /** Email address of the member */
   email: string;
+  /** Phone number of the member */
   phoneNumber: string;
+  /** Residential address of the member */
   address: string;
+  /** Membership type object defining the member's privileges */
   memberType: MemberType;
 
   /**
-   * Creates a new Member instance
-   * @param memberId the unique identifier for the member
-   * @param fullName the full name of the member
-   * @param email the email address of the member
-   * @param phoneNumber the phone number of the member
-   * @param address the address of the member
-   * @param memberType the type of membership
+   * Creates a new Member instance.
+   * @param memberId - Unique ID assigned to the member
+   * @param fullName - Member's full name
+   * @param email - Member's email address
+   * @param phoneNumber - Member's phone number
+   * @param address - Member's residential address
+   * @param memberType - The membership type details for this member
    */
   constructor(
     memberId: string,
@@ -37,51 +56,19 @@ export class Member {
   }
 
   /**
-   * Reserves a book for the member
-   * @param book the book object to reserve
-   * @returns the created reservation object
-   * @throws {Error} if the book is not available or reservation limit is reached
+   * Returns a formatted string of member details.
+   * Useful for logging or display purposes.
+   * @returns A string containing member's information.
    */
-  reserveBook(book: Book): Reservation {
-    if (!book.isAvailable) {
-      throw new Error("The book is not available for reservation.");
-    }
-
-    const currentReservations = 0; 
-    if (currentReservations >= this.memberType.maxReservations) {
-      throw new Error("Maximum reservation limit reached for this member.");
-    }
-
-    const reservation = new Reservation(
-      "RES" + Date.now(), 
-      this.memberId,
-      book.bookId,
-      new Date(),
-      "Book reserved"
-    );
-
-    book.isAvailable = false;
-    return reservation;
+  getMemberInfo(): string {
+    return `
+Member Details:
+- ID: ${this.memberId}
+- Name: ${this.fullName}
+- Email: ${this.email}
+- Phone: ${this.phoneNumber}
+- Address: ${this.address}
+- Member Type: ${this.memberType.typeName}
+`;
   }
-}
-
-/**
- * Defines the type of membership with associated limits
- */
-export interface MemberType {
-  typeId: string;
-  typeName: string;
-  maxReservations: number;
-  loanPeriodDays: number;
-}
-
-/**
- * Defines the structure of a book
- */
-interface Book {
-  bookId: string;
-  title: string;
-  author: string;
-  isbn: string;
-  isAvailable: boolean;
 }
