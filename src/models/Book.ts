@@ -15,6 +15,7 @@ export abstract class Book {
     availableCopies: number;
     location: string;
     reviews: Review[];
+    isAvailable: boolean; // Add this property
 
     /**
      * Creates a new Book instance
@@ -29,8 +30,18 @@ export abstract class Book {
      * @param location the location where the book is stored
      * @param reviews the array of reviews for the book
      */
-    constructor(title: string, author: string, bookId: string, category: string, publicationYear: number, isbn: string, 
-                format: BookFormat[] = [], availableCopies: number, location: string, reviews: Review[] = []) {
+    constructor(
+        title: string,
+        author: string,
+        bookId: string,
+        category: string,
+        publicationYear: number,
+        isbn: string,
+        format: BookFormat[] = [],
+        availableCopies: number,
+        location: string,
+        reviews: Review[] = []
+    ) {
         this.bookId = bookId;
         this.title = title;
         this.author = author;
@@ -41,6 +52,7 @@ export abstract class Book {
         this.availableCopies = availableCopies;
         this.location = location;
         this.reviews = reviews;
+        this.isAvailable = availableCopies > 0; // Initialize based on available copies
     }
 
     /**
