@@ -9,6 +9,17 @@ import { Librarian } from "./Librarian";
  * Manages the library's collection of books, members, borrowed books, reservations, reviews, and librarians
  */
 export class Library {
+  getAllBorrowedBooks() {
+    throw new Error("Method not implemented.");
+  }
+  /**
+   * Allows a member to reserve a book
+   * @param reservation the reservation object to add
+   * @throws {Error} if the reservation is invalid
+   */
+  returnBook(borrowId: string, arg1: Date) {
+    throw new Error("Method not implemented.");
+  }
    
   private books: Book[];
   private members: Member[];
