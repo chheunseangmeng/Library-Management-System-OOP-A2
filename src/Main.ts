@@ -10,25 +10,10 @@ import { Library } from "./models/Library";
 import { BookSearch } from "./services/BookSearch";
 import { Category } from "./models/Category";
 import { CategoryType } from "./models/enum/CategoryType";
+import { FictionBook } from "./models/FictionBook";
 
 
-// Define a concrete subclass for Book
-class FictionBook extends Book {
-  constructor(
-    title: string,
-    author: string,
-    bookId: string,
-    category: string,
-    publicationYear: number,
-    isbn: string,
-    format: BookFormat[],
-    availableCopies: number,
-    location: string,
-    reviews: Review[] = []
-  ) {
-    super(title, author, bookId, category, publicationYear, isbn, format, availableCopies, location, reviews);
-  }
-}
+
 
 // Create member
 const member = new Member(
