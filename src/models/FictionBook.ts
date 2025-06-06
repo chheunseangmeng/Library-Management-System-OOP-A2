@@ -6,6 +6,7 @@ import { Review } from "./Review";
  * Represents a fiction book, extending the base Book class
  */
 export class FictionBook extends Book {
+  [x: string]: any;
   /**
    * Creates a new FictionBook instance
    * @param title the title of the book
