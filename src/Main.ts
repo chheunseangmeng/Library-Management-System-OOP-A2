@@ -76,9 +76,12 @@ borrowedBooks.forEach(borrow => {
   const book = library.getBookById(borrow.bookId);
   const memberInfo = member.getMemberInfo(); // Or use library.getMemberById(borrow.memberId)?.getMemberInfo()
 
-  console.log(`\n📖 Book ID: ${borrow.bookId}, Due Date: ${borrow.dueDate.toDateString()}`);
+  console.log(`\n📖 Book ID: ${borrow.bookId}`);
+  console.log(`📅 Due Date: ${borrow.dueDate.toDateString()}`);
+  console.log(`🙋 Member Info:`);
   console.log(memberInfo);
 });
+
 console.log("=======================================");
 
 // 2. Member returns a book and sees if fines apply
@@ -98,15 +101,16 @@ console.log(`💰 Fine Applied: $${borrowedBook.fine}`);
 console.log(borrower?.getMemberInfo());
 
 
-// 3. Librarian sees available copies
-console.log("\n3. Available copies:");
-console.log(`Book '${book1.title}' available copies: ${library.getAvailableCopies(book1.bookId)}`);
+// 📦 3. Librarian sees available copies
+console.log("\n📦 3. Available copies:");
+console.log(`📗 Book '${book1.title}' available copies: ${library.getAvailableCopies(book1.bookId)}`);
 
-// 4. Member reserves a book
-console.log("\n4. Reserving a book:");
+// 📌 4. Member reserves a book
+console.log("\n📌 4. Reserving a book:");
 const reservation = new Reservation("r001", member.memberId, book1.bookId, new Date(), "Please notify me when the book is available.");
 library.reserveBook(member.memberId, book1.bookId, reservation);
-console.log(`Reservation created for ${book1.title}`);
+console.log(`✅ Reservation created for ${book1.title}`);
+
 
 console.log("\n");
 console.log("⭐ 5. Adding a Review:");
@@ -128,9 +132,9 @@ const reviewer = library.getMemberById(review.memberId);
 console.log(`📝 Review added for '${book1.title}' by:\n${reviewer?.getMemberInfo()}`);
 console.log(`💬 "${review.comment}" - Rated: ${review.rating}/5`);
 
+// 📊 Display average rating of the book
+console.log(`📊 Average rating for '${book1.title}': ${book1.getAverageRating()}`);
 
-// Display average rating of the book
-console.log(`Average rating for '${book1.title}': ${book1.getAverageRating()}`);
 
 
 
