@@ -2,6 +2,10 @@
  * Represents a notification sent to a member.
  */
 export class Notification {
+  static markAsRead: any;
+  static getSummary() {
+    throw new Error("Method not implemented.");
+  }
   notificationId: string; // Unique ID of the notification
   memberId: string;       // ID of the member who receives the notification
   message: string;        // Content/message of the notification

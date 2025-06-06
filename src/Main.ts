@@ -87,7 +87,6 @@ borrowedBooks.forEach(borrow => {
 console.log("==================================");
 
 // 2. Member returns a book and sees if fines apply
-console.log("==================================");
 console.log("🔁 2. Returning Book and Fine Calculation:");
 
 const returnDate = new Date("2025-06-20");
@@ -138,20 +137,17 @@ if (borrowedBook.fine > 0) {
 console.log("==================================");
 
 // Mark borrow notification as read
-console.log("==================================");
 console.log("📬 Notification Status:");
 borrowNotification.markAsRead();
 console.log(`Notification for borrowing '${book1.title}' read: ${borrowNotification.isRead}`);
 console.log("==================================");
 
 // 3. Librarian sees available copies
-console.log("==================================");
 console.log("3. Available copies:");
 console.log(`Book '${book1.title}' available copies: ${library.getAvailableCopies(book1.bookId)}`);
 console.log("==================================");
 
 // 4. Member reserves a book
-console.log("==================================");
 console.log("4. Reserving a book:");
 const reservation = new Reservation("r001", member.memberId, book1.bookId, new Date(), "Please notify me when the book is available.");
 library.reserveBook(member.memberId, book1.bookId, reservation);
@@ -170,7 +166,6 @@ console.log(`📅 ${reservationNotification.getSummary()}`);
 console.log("==================================");
 
 // 5. Adding a review
-console.log("==================================");
 console.log("⭐ 5. Adding a Review:");
 console.log("");
 
@@ -192,7 +187,6 @@ console.log(`Average rating for '${book1.title}': ${book1.getAverageRating()}`);
 console.log("==================================");
 
 // 6. Search results
-console.log("==================================");
 console.log("🔎 6. Search Results:");
 const bookSearch = new BookSearch(library.getAllBooks());
 const foundBooks = bookSearch.searchByTitle("gatsby");
@@ -203,14 +197,12 @@ foundBooks.forEach(book => {
 console.log("==================================");
 
 // 7. Filter books by category
-console.log("==================================");
 console.log("📂 7. Filter Books by Category 'Classic':");
 const classics = bookSearch.filterByCategory("Classic");
 classics.forEach(book => console.log(`- ${book.title}`));
 console.log("==================================");
 
 // 8. Available books
-console.log("==================================");
 console.log("📗 8. Available Books:");
 const availableBooks = bookSearch.filterByAvailability();
 availableBooks.forEach(book => console.log(`- ${book.title} (${book.availableCopies} copies)`));
