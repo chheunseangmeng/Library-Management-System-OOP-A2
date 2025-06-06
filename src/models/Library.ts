@@ -4,6 +4,7 @@ import { BorrowedBook } from "./BorrowedBook";
 import { Reservation } from "./Reservation";
 import { Review } from "./Review";
 import { Librarian } from "./Librarian";
+import { BookSearch } from "../services/BookSearch";
 
 /**
  * Manages the library's collection of books, members, borrowed books, reservations, reviews, and librarians
@@ -16,7 +17,8 @@ export class Library {
   private reservations: Reservation[];
   private reviews: Review[];
   private librarians: Librarian[];
-    memberId: any;
+  private bookSearch: BookSearch
+  memberId: any;
 
   /**
    * Creates a new Library instance
@@ -28,6 +30,7 @@ export class Library {
     this.reservations = [];
     this.reviews = [];
     this.librarians = [];
+    this.bookSearch = new BookSearch([]);
   }
 
   /**
@@ -103,7 +106,18 @@ export class Library {
   return this.borrowedBooks.filter(book => book.memberId === memberId);
 }
 
+
+getBookById(bookId: string): Book | undefined {
+  return this.books.find(book => book.bookId === bookId);
+}
+getAllBooks(): Book[] {
+  return this.books;
+}
+
   
+getMemberById(memberId: string): Member | undefined {
+  return this.members.find(member => member.memberId === memberId);
+}
 
   
 
@@ -113,6 +127,12 @@ export class Library {
    */
   notYetBorrowedBook(): BorrowedBook[] {
     return this.borrowedBooks.filter(borrow => !borrow.isReturned);
+  }
+  
+
+  
+  public getBookSearch(): BookSearch {
+    return this.bookSearch;
   }
 
   /**
