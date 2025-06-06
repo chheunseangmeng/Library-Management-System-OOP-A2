@@ -1,3 +1,6 @@
+/**
+ * Represents a payment transaction for a member.
+ */
 export class Payment {
   // Unique identifier for the payment transaction
   paymentId: string;
@@ -7,7 +10,7 @@ export class Payment {
   amount: number;
   // Date when the payment was made
   paymentDate: Date;
-  // Payment method (e.g., credit, debit, cash)
+  // Payment method (e.g., credit, debit, cash, QR code)
   method: string;
 
   // Constructor to initialize a Payment instance
@@ -21,8 +24,8 @@ export class Payment {
 
   // Processes the payment based on the provided payment type
   processPayment(paymentType: string): boolean {
-    // Check if payment type is supported (credit, debit, or cash)
-    if (paymentType === "credit" || paymentType === "debit" || paymentType === "cash") {
+    // Check if payment type is supported (credit, debit, cash, or QR code)
+    if (paymentType === "credit" || paymentType === "debit" || paymentType === "cash" || paymentType === "QR code") {
       // Log payment processing details
       console.log(`Processing ${paymentType} payment of ${this.amount} for member ${this.memberId}.`);
       // Update payment method
@@ -39,4 +42,3 @@ export class Payment {
     }
   }
 }
-
